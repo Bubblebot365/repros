@@ -2,7 +2,6 @@ name: 02 - Workflow Events
 
 on: 
     pull_request:
-    workflow_dispatch:
     kill_switch:
 
 jobs:
