@@ -23,5 +23,5 @@ jobs:
     steps:
       - name: show Os
         run: |
-          echo "this jubo is runningon a MacOS runner."
-          echo "runner os: $runner_os"
+          echo "this job is running on a MacOS runner."
+          echo "runner os: $RUNNER_OS"
