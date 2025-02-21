@@ -8,9 +8,13 @@ jobs:
         steps:
             - name: checkout Code
               uses: actions/checkout@v4 
-            - name: printing folders
-              run: ls 
-        #0.
+            - name: setuo node
+              uses: actions/setup-node@v3
+              with:
+                node-version:'20.x' 
+            - name: Install Dependencies
+              run: npm ci  
+              #0.
         #1. installs deps of our react applicaiton
         #2. Execute automated tests
         
