@@ -13,7 +13,7 @@ jobs:
               with:
                 node-version: '22.x' 
             - name: Install Dependencies
-              run: npm ci 
+              run: npm ci
               working-directory: /c/GitHub/repros
         
               #0.
