@@ -5,7 +5,12 @@ on: push
 jobs:
     build:
         runs-on: ubuntu-latest
-
+        steps:
+            - name: checkout Code
+              uses: actions/checkout@v4 
+            - name: printing folders
+              run: ls 
+        #0.
         #1. installs deps of our react applicaiton
         #2. Execute automated tests
         
