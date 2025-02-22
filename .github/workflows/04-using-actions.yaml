@@ -5,6 +5,9 @@ on: push
 jobs:
     build:
         runs-on: ubuntu-latest
+        defaults: 
+          run: 
+            working-directory: .github/workflows/04-using-actions/react-app
         steps:
             - name: checkout Code
               uses: actions/checkout@v4 
