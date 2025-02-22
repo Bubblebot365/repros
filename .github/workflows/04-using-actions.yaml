@@ -17,7 +17,9 @@ jobs:
                 node-version: '22.x' 
             - name: Install Dependencies
               run: npm ci
-              working-directory: .github/workflows/04-using-actions/react-app
+            - name: Run unit Tests
+              run: npm run test
+              
         
         #0.
         #1. installs deps of our react applicaiton
