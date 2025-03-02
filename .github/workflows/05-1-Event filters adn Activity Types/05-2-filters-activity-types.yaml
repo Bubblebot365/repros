@@ -1,9 +1,9 @@
-name: 05-1-filters-activity-types.yaml
+name: 05-2-filters-activity-types.yaml
 
 no: 
     workflow_dispatch
     pull_request 
-      types: [open, synchronize]
+      types: [close, synchronize]
       branches:
         - main
 
@@ -11,4 +11,4 @@ jobs:
     echo:
         runs-on: ubuntu-latest
         steps: 
-            -run: Running whenever a PR is opened or synchronized AND Base branch is main. 
+            -run: echo "Running whenever a PR is closed or synchronized AND Base branch is main." 
