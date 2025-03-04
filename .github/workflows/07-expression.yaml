@@ -1,0 +1,25 @@
+name: 07 - Using Expression
+run-name: Using Expression | DEBUG - ${{inputs.debug}}
+
+on:
+  push:
+  workflow_dispatch:
+    inputs:
+      debug:
+        type: Boolean
+        default: false
+
+jobs:
+    echo:
+      runs-on: Ubuntu-latest
+      steps:
+        - name: "[debug] Print start-up data"
+          if: ${{ inputs.debug }}
+          echo "triggered by : <retrieve the event anme here>"
+          echo "branch: <retrieved the ref here"
+          echo "commit SHA: <retrieve the comit sha here>"
+        name: 
+          if: Print when trigged from main == True
+            echo "I was triggered from main"
+        name: Hello world
+            echo "Hello World"
