@@ -15,11 +15,13 @@ jobs:
       steps:
         - name: "[debug] Print start-up data"
           if: ${{ inputs.debug }}
-          echo "triggered by : <retrieve the event anme here>"
-          echo "branch: <retrieved the ref here"
-          echo "commit SHA: <retrieve the comit sha here>"
-        name: 
-          if: Print when trigged from main == True
-            echo "I was triggered from main"
-        name: Hello world
-            echo "Hello World"
+          run: |
+            echo "triggered by : ${{github.event_name}}" 
+            echo "branch: ${{github.ref}}"
+            echo "commit SHA: ${{github.Sha}} 
+            echo "Runner Os: ${{runner.os}}"
+        - name: "[debug] Print trigger from main"
+          if: ${{ inputs.debug && github.ref == 'refs/heads/main'}}
+          run: echo "I was triggered from main"
+        - name: Greeting
+          run:  echo "Hello World"
