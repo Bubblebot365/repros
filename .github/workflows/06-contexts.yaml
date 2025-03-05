@@ -30,15 +30,15 @@ jobs:
           echo "Run number: ${{github.run_number}}"
       - name: Retrieve Variable
         run: | 
-          echo "Variable value: ${{vars.My_VAR}}"
+          echo "variable value: ${{vars.My_VAR}}"
       - name: Print env Variable
         run: |
           echo "workflow env: ${{ env.my_workflow_var}}"
-          echo "Overwritten env: ${{ env.my_Overwritten_var}}"
+          echo "overwritten env: ${{ env.my_overwritten_var}}"
   echo-data2:
     runs-on: ubuntu-latest
     steps:
       - name: Print env Variable
         run: |
-          echo "workflow env: ${{ env.My_workflow_var}}"
-          echo "Overwritten env: ${{my_overwritten_var}}"    
+          echo "workflow env: ${{ env.my_workflow_var}}"
+          echo "overwritten env: ${{my_overwritten_var}}"    
