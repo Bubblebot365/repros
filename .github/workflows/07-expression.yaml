@@ -1,5 +1,5 @@
 name: 07 - Using Expression
-run-name: Using Expression | DEBUG - ${{inputs.debug}}
+run-name: Using Expression | DEBUG - ${{ inputs.debug }}
 
 on:
   push:
@@ -24,4 +24,4 @@ jobs:
           if: ${{ inputs.debug && github.ref == 'refs/heads/main'}}
           run: echo "I was triggered from main"
         - name: Greeting
-          run:  echo "Hello World"
+          run:  echo "Hello, World"
