@@ -1,8 +1,7 @@
 name: 07 - Using Expression
-run-name: Using Expression | DEBUG - ${{ inputs.debug }}
+run-name: Using Expression | DEBUG - ${{ inputs.debug && 'ON' || 'OFF' }}
 
 on:
-  push:
   workflow_dispatch:
     inputs:
       debug:
