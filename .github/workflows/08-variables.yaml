@@ -2,7 +2,7 @@ name: 08 - Variables
 
 on: 
     push:
-    workdflow_dispatch:
+    workflow_dispatch:
         inputs:
             debug:
                 type: boolean
@@ -23,7 +23,7 @@ jobs:
                 STEP_VAR2: "I am another step env var"
               run: |
                 echo "step env var: ${{ env.STEP_VAR }}"  
-                echo "step env var 2: ${{STEP_VAR2}}"
+                echo "step env var 2: ${{env.STEP_VAR2}}"
                 echo "Job env var: ${{env.JOB_VAR}}"
                 echo "Workflow env var: ${{env.WORKFLOW_VAR}}"
                 echo "Overwritten: ${{env.OVERWRITTEN}}"
