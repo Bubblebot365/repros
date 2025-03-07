@@ -17,7 +17,7 @@ jobs:
             JOB_VAR: "I am the job env var"
             OVERWRITTEN: "I have been over written at the job level"
         steps:
-            - name: print Env Variables:
+            - name: Print Env Variables
               env: 
                 STEP_VAR: "I am the step env var"  
                 STEP_VAR2: "I am another step env var"
