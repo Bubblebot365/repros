@@ -9,10 +9,7 @@ on:
 env:
     WORKFLOW_VAR: "I am the workflow env var"
     OVERWRITTEN: "I will be overwritten var" 
-      inputs:
-        debug:
-          type:
-          default: UNDEFINED_VAR_WITH_DEFAULT ${{env.UNDEFINED_VAR_WITH_DEFAULT}}
+
 jobs:
     echo:
         runs-on: ubuntu-latest
@@ -37,13 +34,11 @@ jobs:
                 echo "Step env var: ${{env.OVERWRITTEN}}"  
     echo2:
       runs-on: ubuntu-latest
-      env: 
-        prod
       steps:
         - name: Print Variables
           run: |
-          echo "Repro var: ${{var.REPOSITORY_VAR}}"
-          echo "Environment var: ${{var.Environment_VAR}}"
+            echo "Repro var: ${{var.REPOSITORY_VAR}}"
+            echo "Environment var: ${{env.TARGET_VAR}}"
     echo-prod:
       runs-on: ubuntu-latest
       environment: prod   
@@ -57,5 +52,5 @@ jobs:
       steps:
         - name: Print Undefined Variables
           run: |
-          echo "Repro var: ${{var.REPOSITORY_VAR}}"
-          echo "Environment var: ${{var.Environment_VAR}}"        
+            echo "Repro var: ${{var.REPOSITORY_VAR}}"
+            echo "Environment var: ${{env.TARGET_VAR}}"        
