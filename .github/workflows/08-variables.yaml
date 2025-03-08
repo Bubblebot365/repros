@@ -37,7 +37,7 @@ jobs:
         steps:
           - name: Print Variables
             run: |
-              echo "Repro var: ${{var.REPOSITORY_VAR}}"
+              echo "Repro var: ${{env.REPOSITORY_VAR}}"
               echo "Environment var: ${{env.TARGET_VAR}}"
     echo-prod:
         runs-on: ubuntu-latest
@@ -45,12 +45,12 @@ jobs:
         steps: 
           - name: Print Prod Variables
             run: |
-              echo "Repro var: ${{var.REPOSITORY_VAR}}"
+              echo "Repro var: ${{env.REPOSITORY_VAR}}"
               echo "Environment var: ${{env.TARGET_VAR}}"
     echo-undefined:
         runs-on: ubuntu-latest
         steps:
           - name: Print Undefined Variables
             run: |
-              echo "Repro var: ${{var.REPOSITORY_VAR}}"
+              echo "Repro var: ${{env.REPOSITORY_VAR}}"
               echo "Environment var: ${{env.TARGET_VAR}}"        
