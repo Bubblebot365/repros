@@ -2,44 +2,53 @@ name: 10 - Controlling the Execution Flow
 
 on: 
     workflow_dispatch:
-        inputs: pass-unit-tests
-            type: boolean
-            default: false
+        inputs: 
+            pass-unit-tests:
+                type: boolean
+                description: Whether unit tests pass or not
+                default: false
 
 jobs:
     lint-build:
         runs-on: ubuntu-latest
         steps: 
             - name: Lint and build
-              echo "Linting and builidn project"
+              run: echo "Linting and builidn project"
     Unit-tests:
         runs-on: ubuntu-latest
         steps:
             - name: Running unit test
-              echo: "running test..."
+              run: echo "running test..."
             - name: Failing tests
-              if : ${{ pass-unit-tests ==false  }}
+              if : ${{ !inputs.pass-unit-tests  }}
+              run: exit 1
     deply-nonprod:
         runs-on: ubuntu-latest
+        needs:
+          - lint-build
+          - unit-tests
         steps:
-            if: ${{ lint-build && unit-tests == success}}
             - name: Deploying to nonprod
-              echo: "Deploying to nonprod..."
+              run: echo "Deploying to nonprod..."
     e2e-tests:
         runs-on: ubuntu-latest
+        needs: 
+            - deploy-nonprod
         steps: 
-            if: ${{ deploy-nonprod == success}}
-          - name: Running E2E tests
-            echo: "Running E2E tests..."
+            - name: Running E2E tests
+              run: echo "Running E2E tests..."
     load-tests:
         runs-on: ubuntu-latest
-        if: ${{ deploy-nonprod == success}}
+        needs: 
+            - deploy-nonprod
         steps: 
-        - name: Running Load tests
-          echo: "running load tests..."
+            - name: Running Load tests
+              run: echo "running load tests..."
     deploy-prod:
         runs-on: ubuntu-latest
-        if: ${{e2e-tests && load-tests ==success}}
+        needs: 
+            - e2e-tests 
+            - load-tests 
         steps:
             - name: Deploying to prod
-              echo: "Deploying to prod..."
+              run: echo "Deploying to prod..."
