@@ -13,7 +13,7 @@ jobs:
         runs-on: ubuntu-latest
         steps: 
             - name: Lint and build
-              run: echo "Linting and builidn project"
+              run: echo "Linting and building project"
     unit-tests:
         runs-on: ubuntu-latest
         steps:
