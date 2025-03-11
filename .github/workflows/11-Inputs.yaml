@@ -28,7 +28,7 @@ jobs:
         if: ${{ !inputs.dry-run}}
         needs:
           - build
-          - if: ${{ !inputs.dry-run}}
+        
         steps:
             - name: Deploy
               run: echo "Deploying to ${{inputs.target}}" 
