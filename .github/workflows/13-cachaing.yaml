@@ -45,3 +45,31 @@ jobs:
               run: npm run build
             - name: Deploying to nonprod
               run: echo "Deploying to nonprod"
+    install-deps:
+      runs-on: ubuntu-latest
+        set: 13-caching/react-app
+          defaults:
+          run:
+            working-directory   
+      steps: 
+        - name: checkout code
+        - name: setup Node
+        - name: Calculate cache key
+          id: cache-key
+            key: generate Cache-key
+            value: deps-node-modules - ${{hashFiles(('13-caching/react-app/package-lack.json'))}}
+    linting:
+      runs-on: ubuntu-latest
+      if: install-deps = success
+      set: 
+        defaults: 
+          working-directory
+        steps:
+          - name: Checkout Code
+          - name: Setup Node
+          - name: Download cached dependencies  
+            if: ${{inputs.use-cache}}
+          - name: Testing
+            run: npm run test
+          - name: Linting
+            run: echo "linting" 
