@@ -2,19 +2,19 @@ name: 13 - Using Caching
 
 on: 
   workflow_dispatch:
-      inputs: 
-          use-cache:
-              description: "whether to execute cache or not"
-              types: boolean
-              default: true
-          node-version: 
-            description: Node version
-            type: choice    
-            options: 
-              - 18.x
-              - 20.x
-              - 21.x 
-            default: 20.x
+    inputs: 
+        use-cache:
+          description: "whether to execute cache or not"
+          type: boolean
+          default: true
+        node-version: 
+          description: Node version
+          type: choice    
+          options: 
+            - 18.x
+            - 20.x
+            - 21.x 
+          default: 20.x
 
 jobs:
     build:
