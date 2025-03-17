@@ -11,8 +11,7 @@ on:
 jobs:
     build:
         runs-on: ubuntu-latest
-        set: 13-caching/react-appp
-        default: 
+        defaults: 
           run: 
             working-directory: 13-caching/react-app
         steps: 
