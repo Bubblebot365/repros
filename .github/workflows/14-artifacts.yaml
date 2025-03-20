@@ -27,7 +27,7 @@ jobs:
             - name: Install dependencies
               if: steps.cache.outputs.cache-hit != 'true'
               run: npm ci
-            - name: ${{ env.test-verage-key }}
+            - name: Run tests with coverage
               run: npm run test
             - name: Build code
               run: npm run test -- --coverage
