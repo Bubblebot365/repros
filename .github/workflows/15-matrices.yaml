@@ -23,7 +23,8 @@ jobs:
       steps: 
         - name: Setup node
           uses: actions/setup-node@v3
-          with: ${{ matrix.node-version}}
+          with: 
+            node-version: ${{ matrix.node-version}}
         - name: Perform Some test
           run: echo " running tests on OS ${{ matrix.os }} and nodeJS ${{ matrix.node-version }}"
 
