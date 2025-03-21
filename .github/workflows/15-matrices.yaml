@@ -5,7 +5,8 @@ on:
 
 jobs: 
     backward-compatibility:
-      startegy: 
+      name: ${{ matrix.os }}-${{ matrix.node-version }}
+      strategy: 
         matrix: 
           node: [18.x, 20.x, 21.x]
            os: 
@@ -15,11 +16,10 @@ jobs:
             - os: ububntu-latest
               node: 16.x
               tag: experimetnal
-                fail-fast: false
-              os: ubuntu-latest
+              fail-fast: false
+            - os: ubuntu-latest
               node: 21.x
       runs-on: ${{ matrix.os }}
-        defaults: ubuntu-latest  
       steps: 
         - name: Setup node
           uses: actions/setup-node@v3
