@@ -1,23 +1,23 @@
 name: 15 - Working with Matrices
 
 on: 
-        workflow_dispatch: 
+    workflow_dispatch: 
 
 jobs: 
   backwards-compatibility:
     name: ${{ matrix.os }}-${{ matrix.node-version }}
     strategy: 
-        fail-fast: false
+      fail-fast: false
       matrix: 
         node-version: [18.x, 20.x, 21.x]
         os: 
           - ubuntu-latest
           - window-latest
-      include: 
-          - os: ububntu-latest
+        include: 
+          - os: ubuntu-latest
             node-version: 16.x
           - os: ubuntu-latest
-            node: 21.x
+            node-version: 21.x
             tag: experimental
     runs-on: ${{ matrix.os }}
     steps: 
