@@ -6,7 +6,7 @@ inputs:
     description: NodeJS version to use
     default: 20.x
     required: false 
-  working-directory: 
+  working-dir: 
     description: The working directory of the application
     default: '.'
     required: false
@@ -18,7 +18,7 @@ runs:
       uses: actions/setup-node@v3
       with: 
         node-version: ${{ inputs.node-version }}
-    - name: Cache dependies
+    - name: Cache dependencies
       id: cache
       uses: action/cache@v3
       with: 
@@ -28,4 +28,4 @@ runs:
       if: steps.cache.outputs.cache-hit != 'true'
       run: npm ci
       shell: bash
-      working-directory: ${{ inputs.owrking-dir }}
+      working-directory: ${{ inputs.working-dir }}
