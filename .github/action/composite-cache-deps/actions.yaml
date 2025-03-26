@@ -1,0 +1,8 @@
+name: Cache Node and NPM Dependencies
+description: "this action allows to cache both Node an NPM dependencies based on the package-lock.json file."
+on: 
+  node-version: NodeJS version 
+    default: 20.x
+  working-dir: 
+  description: "The working director of the applicatiton"
+      
