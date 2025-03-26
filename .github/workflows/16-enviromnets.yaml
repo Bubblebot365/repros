@@ -10,7 +10,7 @@ on:
 
 env: ${{target_env}}
 
-job: 
+jobs: 
     echo: 
         runs-on: ubuntu-latest
         environment: ${{ inputs.target-env }} 
