@@ -18,7 +18,7 @@ jobs:
         needs: echo-staging
         steps: 
           - name: e2e test
-            runs: |
+            run: |
               echo "running e2e"
     deploy-prod-frontend: 
         runs-on: ubuntu-latest
