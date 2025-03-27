@@ -13,8 +13,8 @@ jobs:
       run: 
         working-dir: ${{ env.working-directory }}
     steps: 
+      - uses: actions/checkout@v4
       - name: Setup Node and NPM Dependencies
-      - name: actions/checkout@v4
         uses: ./.github/actions/composite-cache-deps
         with:  
           node-version: 20.x
