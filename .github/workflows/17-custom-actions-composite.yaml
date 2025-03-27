@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults: 
       run: 
-        working-dir: ${{ env.working-directory }}
+        working-directory: ${{ env.working-directory }}
     steps: 
       - uses: actions/checkout@v4
       - name: Setup Node and NPM Dependencies
