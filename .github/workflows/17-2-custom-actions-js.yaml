@@ -14,5 +14,5 @@ jobs:
     steps: 
       - uses: actions/checkout@v4
       - name: Check for dependency updates
-        uses: /github/repros/.github/actions/js-dependency-update
+        uses: C:\GitHub\repros\.github\actions\js-dependency-update
         
