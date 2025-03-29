@@ -1,0 +1,18 @@
+name: 17 - 2 - Custom Actions - Composite
+
+on: 
+  workflow_dispatch: 
+   
+
+  
+jobs: 
+  dependency-update:
+    runs-on: ubuntu-latest
+    defaults: 
+      run: 
+        working-directory: ${{ env.working-directory }}
+    steps: 
+      - uses: actions/checkout@v4
+      - name: Check for dependency updates
+        uses: /github/repros/.github/actions/js-dependency-update
+        
