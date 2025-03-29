@@ -5,6 +5,9 @@ on:
    
 
   
+env:
+  working-directory: ./your-default-directory
+  
 jobs: 
   dependency-update:
     runs-on: ubuntu-latest
