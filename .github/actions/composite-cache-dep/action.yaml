@@ -13,7 +13,7 @@ inputs:
   target-env: 
     description: '"dev" or "prod". Controls whether dev dependencies are installed'
     default: 'dev'
-    required: false'
+    required: 'false'
 runs: 
   using: composite
   steps:
@@ -25,9 +25,9 @@ runs:
       id: cache
       uses: actions/cache@v3
       with: 
-        path: $${{ inputs.working-dir }}/node_modules
+        path: ${{ inputs.working-dir }}/node_modules
         key: node-modules-${{ inputs.target-env }}-${{ hashFiles('{0},{1}', inputs.working-dir, 'package-lock.json') }}
-      if steps.cahe.outputs.cache-hit != 'true'
+      if steps.cache.outputs.cache-hit != 'true'
       run: ${{  inputs.target-env == 'dev' && 'npm ci' || 'npm ci --omit=dev'}}
       shell: bash
       working-directory: ${{ inputs.working-dir }}
