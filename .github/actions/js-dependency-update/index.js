@@ -12,7 +12,7 @@ async function run() {
   4. If there are modifed files: 
     4.1 Add and commit files to the target-branch
     4.2 Create a PR to the Base-branch using the octokit API
-  5. Ohterwise, conclude the custom action
+  5. Otherwise, conclude the custom action
     */
   core.info('I am a custom JS action');
 }
