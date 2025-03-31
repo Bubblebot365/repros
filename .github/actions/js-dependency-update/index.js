@@ -1,5 +1,8 @@
 const core = require('2actions/core');
 async function run() {
+  const baseBranch = core.getInput('base-branch');
+  const targetBranch = core.getInput('target-barnch');
+  const ghToken = core.getInput()
   /*
   1. Parse inputs: 
     1.1 base-branch form which to check for updates
