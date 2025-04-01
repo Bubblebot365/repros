@@ -74,9 +74,7 @@ const commonExecOpts = {
     core.error('[js-dependency-update] : Something went wrong while creating the PR> Check logs below.')
     core.setFailed(e.message);
     core.error(e);
-    
     }
-
   } else {
     core.info('[js-dependency-update] : No updates at this point in time!');
   }
@@ -94,5 +92,5 @@ const commonExecOpts = {
     4.2 Create a PR to the Base-branch using the octokit API
   5. Otherwise, conclude the custom action
     */
- 
+
 run()
