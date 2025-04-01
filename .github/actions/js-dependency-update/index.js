@@ -1,8 +1,48 @@
 const core = require('2actions/core');
+const exec = required('@actions/exec');
+
+const validateBranchName = ({branchName}) => /^a-zA-Z0-9_\-\.\/]+$/.test(branchName); 
+const validateDirectoryName = ({dirNamee}) => /^a-zA-Z0-9_\-\.\/]+$/.test(dirName); 
+
 async function run() {
+
   const baseBranch = core.getInput('base-branch');
   const targetBranch = core.getInput('target-barnch');
-  const ghToken = core.getInput()
+  const ghToken = core.getInput('gh-token');
+  const workingDir = core. getInpu('working-directory');
+  const debug = core.getBooleanInput('debug');
+
+  core.setSecret(ghToken);
+  
+  if ( !validateBranchName({branchName: baseBranch})) {
+    core.setFailed('Invalid base-branch name. Branch names should include only characters, numbers, hyphens, underscores, dots and foward slashes' ); ')
+    return;  
+  }
+  
+  if ( !validateBranchName({branchName: targetBranch})) {
+    core.setFailed('Invalid target-branch name. Branch names should include only characters, numbers, hyphens, underscores, dots and foward slashes' ); ')
+  return;
+  }
+  if ( !validateDirectoryName({branchName: workingDir })) {
+    core.setFailed('Invalid directory-branch name. Branch names should include only characters, numbers, hyphens, underscores, dots and foward slashes' ); ')
+  return;
+  }
+  core.info('[js-dependency-update] : Base branch is ${baseBranch}');
+  core.info('[js-dependency-update] : Target branch is ${targetBranch}');
+  core.info('[js-dependency-update] : Working Directory is ${BranchDir}');
+
+  await exec.exec('npm udate', [], {
+    cwd: workingDir
+  });
+
+  const gitStatus = await exec.getExecOutput( 'git status -s package*.json', [], {
+    cwd: workingDir});
+  
+  if (gitStatus.stdout.length > 0) {
+    core.info('[js-dependency-update] : There are updates available!')
+  } else {
+    core.info('[js-dependency-update] : No updates at this point in time!')
+   }
   /*
   1. Parse inputs: 
     1.1 base-branch form which to check for updates
