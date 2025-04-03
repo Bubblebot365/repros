@@ -1,0 +1,5 @@
+name: "My Custom Action"
+description: "A short description"
+runs:
+  using: "node16"
+  main: "index.js"
