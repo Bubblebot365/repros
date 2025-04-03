@@ -3,22 +3,22 @@ description: "Checks if there are updates to NPM packages, and creates a PR with
 
 inputs: 
   base-branch: 
-  description: The branch used as the base for the dependency update checks
-  detault: main
-  require: false
-head barnch: 
-  description: the branch rom which the PR is created
-  default: update-dependencies
-  require: false
-working-directory: 
-  description: the working directory of the project to check for dependency updates. 
-  require: true
-gh-token: 
-  desciption: Authentication token with repository access. Must have writen access to contents and pull requests. 
-  require: true
-debug: 
-  description: whether to output debug messages to the console
-  default: 'false'
+    description: "The branch used as the base for the dependency update checks"
+    default: main
+    required: false
+  head-branch: 
+    description: "The branch from which the PR is created"
+    default: update-dependencies
+    required: false
+  working-directory: 
+    description: "The working directory of the project to check for dependency updates."
+    required: true
+  gh-token: 
+    description: "Authentication token with repository access. Must have write access to contents and pull requests."
+    required: true
+  debug: 
+    description: "Whether to output debug messages to the console"
+    default: 'false'
 
 runs:
   using: node20 
