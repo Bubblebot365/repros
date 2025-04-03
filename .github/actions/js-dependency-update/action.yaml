@@ -3,10 +3,10 @@ description: "Checks if there are updates to NPM packages, and creates a PR with
 
 inputs: 
   base-branch: 
-  description: The branch usedas the base for the dependency update checks
+  description: The branch used as the base for the dependency update checks
   detault: main
   require: false
-target barnch: 
+head barnch: 
   description: the branch rom which the PR is created
   default: update-dependencies
   require: false
@@ -18,7 +18,7 @@ gh-token:
   require: true
 debug: 
   description: whether to output debug messages to the console
-  default: false
+  default: 'false'
 
 runs:
   using: node20 
