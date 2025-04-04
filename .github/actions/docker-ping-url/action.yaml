@@ -1,5 +1,25 @@
-name: "My Custom Action"
-description: "A short description"
-runs:
-  using: "node20"
-  main: "index.js"
+name: "Pring URL"
+
+description: "Ping URL until maximun trials have exceeded. If result is not 200 until then, fails the actions."
+
+
+
+inputs: 
+  url:  
+    description: "URL to ping"
+    required: true
+
+  max_trials:
+    description: "Maximum nubmer of trails until action fails"
+    default: '10'
+    required: false
+
+  delay:
+    description: "dealy in seconds between trials"
+    default: '5'
+    required: false
+
+runs: 
+  using: docker
+  image: Dockerfile
+  
