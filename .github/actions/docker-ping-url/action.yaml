@@ -15,9 +15,13 @@ inputs:
     required: false
 
   delay:
-    description: "dealy in seconds between trials"
+    description: "delay in seconds between trials"
     default: '5'
     required: false
+
+outputs:
+  url-reachable:
+    description: "whether the URL is reachable"
 
 runs: 
   using: docker

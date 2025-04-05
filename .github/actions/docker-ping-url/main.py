@@ -1,8 +1,12 @@
 import os
 import requests
-import sleep
+import time
 
-def pint_url(url,dealy, max_trials):
+def set_output(file_path, key, value):
+    with open(file_path, 'a') as file: 
+        print(f'{key}={value}', file=file)
+
+def pint_url(url,delay, max_trials):
     trials = 0
 
     while trials < max_trials:
@@ -22,11 +26,12 @@ def pint_url(url,dealy, max_trials):
  
 def run(): 
     website_url = os.getenv("INPUT_URL")
-    delay = int(os.getenv("INPUT_DELY"))
+    delay = int(os.getenv("INPUT_DELAY"))
     max_trials - int(os.getenv("INPUT_MAX_TRIALS"))
 
     website_reachable = print_url(website_url, delay, max_trials)
 
+    set_output(os.getenv('GITHUB_OUTPUT'), 'url-reachable', website_reachable)
     if not website_reachable: 
         raise Exception(f"website {wesite_url} is malformed or unreachable.") 
 
