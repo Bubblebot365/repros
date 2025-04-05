@@ -15,16 +15,16 @@ const validateDirectoryName = ({dirName}) =>
 const setupLogger = ( ) => ({ debug, prefix} = {edbug: false, prefix = '' }) => ({ 
   debug:(message) => {
      if (debug) {
-        core.info('DEBUG ${prefix}${prefix ? ' : ' : '' }${message}')
+        core.info('DEBUG ${prefix}${prefix ? ' : ' : '' }${message}');
         // extend the logging functionality
      }
    }, 
-   info: (message)=< {
-    core.info('DEBUG ${prefix}${prefix ? ' : ' : '' }${message}')
-   }
-   error: (message) =<{
+   info: (message)=> {
+    core.info('DEBUG ${prefix}${prefix ? ' : ' : '' }${message}');
+   },
+   error: (message) => {
      core.error('${prefix}${prefix ? ' : ' : '' }${message}');
-   }
+   },
 
 });
 
@@ -35,7 +35,7 @@ async function run() {
   const workingDir = core.getInput('working-directory', { required: true });
   const debug = core.getBooleanInput('debug');
   const logger = setupLogger({ debug, prefix: '[js-dependency-update]' })
-
+}
 const commonExecOpts = {
   cwd = workingDir 
 }
@@ -69,7 +69,11 @@ const commonExecOpts = {
   }  
   );
 
+  let updatesAvailable = false;
+
   if (gitStatus.stdout.length > 0) {
+    updatesAvailable = true;
+    
     logger.debug('There are updates available!')
     logger.debug('Setting up git')
     await setupGit();
@@ -97,7 +101,7 @@ const commonExecOpts = {
       owner: github.context.repo.owner, 
       repro: github.context.repo.repo, 
       title: 'Update NPM dependencies', 
-      body: 'This pull request updates NPM packages'
+      body: 'This pull request updates NPM packages',
       base: baseBranch,
       head: headBranch
     });
@@ -109,7 +113,8 @@ const commonExecOpts = {
     }
   } else {
     logger.info('No updates at this point in time!');
+    logger.debug('Setting updates-available output to ${updatesAvailable}');
+    core.setOutput('update-savailable', updatesAvailable);
   }
 
-
-run()
+run();
