@@ -9,7 +9,7 @@ on:
       outputs:
         build-status: 
             description: the status of the build
-            value: ${{ jobs.deploy.outpust.build-status}}
+            value: ${{ jobs.deploy.outputs.build-status}}
         url: 
             description: the url of the deployed version
             value: ${{ jobs.deploy.outputs.url}}
