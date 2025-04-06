@@ -14,7 +14,7 @@ on:
             description: the url of the deployed version
             value: ${{ jobs.deploy.outputs.url}}
 
-job:
+jobs:
     deploy: 
         runs-on: ubuntu-latest
         outputs:
