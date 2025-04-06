@@ -1,0 +1,40 @@
+name: 18 - 1 - Resusable Workflows -Resuable Definition. 
+
+on: 
+    workflow_call: 
+      inputs: 
+          target-directory:
+            type: string
+            required: true
+      outputs:
+        build-status: 
+            description: the status of the build
+            value: ${{ jobs.deploy.outpust.build-status}}
+        url: 
+            description: the url of the deployed version
+            value: ${{ jobs.deploy.outputs.url}}
+
+job:
+    deploy: 
+        runs-on: ubuntu-latest
+        outputs:
+            build-status: ${{ steps.build.outputs.build-status }}
+            url: ${{ steps.deploy.outputs.url }}
+        steps:
+            - name: Checkout repo
+              uses: actions/checkout@v4
+            - name: build
+              run: |
+                echo "building using directory ${{ inputs.target-directory}}"
+                echo "building-staus=success" >> $GITHUB_OUTPUTS"
+            - name: Deploy
+              id: deploy
+              run: |
+                echo "Deploying build artifacts"
+                echo "url=https://www.google.com" >> $GITHUB_OUTPUTS
+
+        
+        
+                
+
+                

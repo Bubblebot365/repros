@@ -17,7 +17,6 @@ on:
         description: Delay in second between trials
         default: '5'
       
-  
 jobs: 
   ping-url:
     runs-on: ubuntu-latest
