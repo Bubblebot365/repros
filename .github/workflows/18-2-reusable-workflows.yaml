@@ -5,7 +5,7 @@ on:
 
 jobs:
     deploy: 
-        uses: Bubblebot365/repros/.github/workflows/18-1-reusable-workflows.yaml
+        uses: Bubblebot365/repros/.github/workflows/18-1-reusable-workflows.yaml@main
         with:
             target-directory: dummy-dir
     print-outs:
