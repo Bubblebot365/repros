@@ -1,0 +1,16 @@
+name: 19 - 1 - Managing Concurrency
+
+on: 
+    workflow_dispatch:
+
+jobs: 
+    ping:
+        runs-on: ubuntu-latest
+        steps:
+            - name: chekckout 
+              uses: actions/checkout@v2
+            - name: Pring URL
+              uses: docker-ping-url
+              max_trials: '20'
+              delay: '5'
+              
