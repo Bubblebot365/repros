@@ -15,5 +15,5 @@ jobs:
               uses: Bubblebot365/repros/.github/actions/docker-ping-url
               with: 
                 url: https://www.invalid-url.com
-              max_trials: '20'
-              delay: '5'
+                max_trials: '20'
+                delay: '5'
